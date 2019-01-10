@@ -11,6 +11,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
     "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
@@ -27,7 +32,34 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "@babel/runtime": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "gsap": "^2.0.2",
     "normalize.css": "^8.0.1",
-    "vue": "^2.5.21"
+    "vue": "^2.5.21",
+    "vuex": "^3.0.1"
+  },
+  "browserslist": [
+    "> 5% in CN",
+    "last 3 Chrome versions",
+    "last 3 Firefox versions",
+    "Safari >= 10",
+    "Explorer >= 10",
+    "Edge >= 12",
+    "iOS >= 10",
+    "Android >= 6"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "entry"
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
   }
 }

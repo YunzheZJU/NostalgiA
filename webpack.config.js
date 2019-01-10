@@ -25,6 +25,7 @@ module.exports = function (env = {}) {
         // 必须在GenerateSW之前生成
         new HtmlWebpackPlugin({
             title: 'NostalgiA',
+            meta: {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
         }),
     ];
 
@@ -53,6 +54,11 @@ module.exports = function (env = {}) {
         module: {
             rules: [
                 {
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/,
+                },
+                {
                     test: /\.(css|less)$/,
                     use: [
                         MiniCssExtractPlugin.loader,
@@ -67,7 +73,8 @@ module.exports = function (env = {}) {
             ],
         },
         resolve: {
-            extensions: ['.js', '.vue']
+            extensions: ['.js', '.vue', '.less'],
+            modules: ['src', 'node_modules'],
         },
         optimization: isProduction ? {
             splitChunks: {
@@ -85,6 +92,7 @@ module.exports = function (env = {}) {
         plugins: plugins,
         devServer: {
             open: true,
+            host: '0.0.0.0',
             contentBase: path.join(__dirname, `../dist`),
             historyApiFallback: {
                 rewrites: [
